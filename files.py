@@ -71,7 +71,8 @@ list(openShelfFile.values()) # get list of stored values (cast to get true list 
 list(openShelfFile.keys())
 openShelfFile.close() # close file again
 
-use pretty printing to save variables
+use pretty printing to save variables in correct formatted form
+saving the code to a .py file lets you import the data like a normal module
 import pprint
 cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
 pprint.pformat(cats) # optional, returns a formatted string with cats-dictionary
@@ -79,8 +80,16 @@ fileObj = open('myCats.py', 'w')
 fileObj.write('cats = ' + pprint.pformat(cats) + '\n')
 fileObj.close()
 
+# now our file is a .py module and can be imported like any other module
+import myCats # import
+myCat.cats # returns the stored data
+myCat.cats[0] # returns first element in list
 
+benefit of a .py file:
+is text file, can be read and modified with any simple editor
+only for basic data types like integers, floats, strings, lists, dictionaries
 
-
+for most applications, shelve module preferred
+file objects cannot be encoded as text
 
 """
