@@ -25,8 +25,20 @@ pyautogui.size() returns tuple with screen resolution (width, heigth)
 pyautogui.moveTo(x, y, duration=0.5) moves mouse to (x,y) with dur default 0
 pyautogui.moveRel(x, y, duration=1.5) relative movement x to right and y down
 pyautogui.position() returns tuple of mouse cursor's position (x,y)
+pyautogui.click() virtual mouse click default: left click at current position
+optional arguments :(x, y, button='left'/'middle'/'right')
+click is composed of the following two functions, which take same arguments
+pyautogui.mouseDown() pushes mouse button down
+pyautogui.mouseUp() releases the mouse button
+pyautogui.rightClick()
+pyautogui.middleClick()
+pyautogui.doubleClick() performs two Clicks with left button
+dragging: moving mouse while holding down one button
+pyautogui.dragTo() absolute dragging, pass duration keyword for proper action
+pyautogui.dragRel() relative dragging
+pyautogui.scroll(amount) scrolls up if positive, down if negative
 
-
+\n
 '''
 
 import pyautogui
