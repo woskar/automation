@@ -102,3 +102,5 @@ pyautogui.hotkey('shift', '4')
 pyautogui.keyDown('shift')
 pyautogui.press('4')
 pyautogui.keyUp('shift')
+
+pyautogui.size()
