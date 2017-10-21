@@ -7,34 +7,44 @@ A python script to get exercise sheets downloaded from the web
 
 import requests, os, bs4
 
-url = 'https://uebungen.physik.uni-heidelberg.de/vorlesung/20172/pep5' # starting url
-location = '/Users/Oskar/Dropbox/PEP5'
+url = 'http://www.biostruct.uni-hd.de/Hohere_Analysis.php' # starting url
+location = '/Users/Oskar/Dropbox/Ana3/'
 
 #os.makedirs('xkcd', exist_ok=True) # store comics in ./xkcd
 
 print('Downloading page %s...' % url)
 res = requests.get(url)
 res.raise_for_status()
-
+print('works checkpoint 1')
 soup = bs4.BeautifulSoup(res.text, "lxml")
 
+# ---- selection broken due to php site not having classes/ids on every tag ----
 # Find the URL of the pdf files
-zettels = soup.select('#infoarea-3922 a')
+#zettels = soup.select('#web5 #left') #content .table1
+print('works checkpoint 2')
+zettels = soup.find("div", class_=False, id=False).findAll('#main .table1 a')
+
+print(type(zettels))
+print(zettels)
+
+print('before if ')
 if zettels == []:
-    print('Could not find Übungsblätter in id=infoarea-3922')
+    print('Could not find Übungsblätter.')
 else:
     print('Selected elements from webpage:')
     print(zettels)
 
     for zettel in zettels:
-        name = zettel.getText()
-        if os.path.isfile(location + '/' + name):
+
+        name = zettel.get('href').split('/')[-1]
+
+        if os.path.isfile(location + name):
             print('File', name, 'already exisits at', location, '.')
             continue
         else:
             print('New File found, now saving...')
 
-            zettelURL = 'https://uebungen.physik.uni-heidelberg.de' + zettel.get('href')
+            zettelURL = 'http://www.biostruct.uni-hd.de' + zettel.get('href')
             print(zettelURL)
             res = requests.get(zettelURL)
             res.raise_for_status()
