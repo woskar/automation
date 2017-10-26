@@ -1,5 +1,6 @@
 ''' 
 Using selenium to download files from the web.
+This script uses the selenium webbrowser and requests for the download.
 '''
 import time, os, requests
 from selenium import webdriver
