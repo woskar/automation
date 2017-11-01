@@ -1,5 +1,5 @@
 ''' 
-Using selenium to download files from the web.
+Using selenium to download exercise sheets from the web.
 This script uses the selenium webbrowser and requests for the download.
 October 2017
 '''
