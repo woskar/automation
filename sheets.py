@@ -13,3 +13,6 @@ location = ''
 
 browser = webdriver.Firefox()
 browser.get(url)
+
+zettels = browser.find_elements_by_partial_link_text('Text')
+print(zettels)
