@@ -17,6 +17,9 @@ browser.get(url)
 zettels = browser.find_elements_by_partial_link_text('Text')
 print(zettels)
 
+print(type(zettels))
+print(zettels)
+
 print('Downloading page %s...' % url)
 res = requests.get(url)
 res.raise_for_status()
