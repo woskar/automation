@@ -26,4 +26,8 @@ res.raise_for_status()
 print('works checkpoint 1')
 soup = bs4.BeautifulSoup(res.text, "lxml")
 
+if os.path.isfile(location + name):
+            print('File', name, 'already exisits at', location, '.')
+            continue
+
 print('Done')
